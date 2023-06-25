@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+layout:decorate = "template">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Validation Form</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  
+</head>
+<body class="hold-transition sidebar-mini">
+<div layout:fragment="content1">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Posts</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active"><a href="#">Posts</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title"> Post Edit </h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+            <div class ="container my-5">
+              <form action="#" th:action=@{/post/update(id=${post.id})} th:object="${post}" method="Post">
+        
+        <div class="form-group">
+          <label for="user_id">User Id</label>
+          <input type="text"  th:field="*{user_id}" class="form-control" id="user_id"  placeholder="Enter UserId">
+        </div>
+        
+       <div class="form-group">
+          <label for="message">Message</label>
+          <input type="text"  th:field="*{message}" class="form-control" id="message"  placeholder="Enter message">
+        </div>
+        
+        <div class="form-group">
+          <label for="like">Like</label>
+          <input type="text" th:field="*{like}" class="form-control" id="like"  placeholder="Enter Like">
+        </div>
+       
+        <div class="form-group">
+          <label for="dislike">Dislike</label>
+          <input type="text" th:field="*{dislike}" class="form-control" id="dislike"  placeholder="Enter Dislike">
+        </div>
+
+        
+        
+        <div class="form-group">
+          <label for="status">Status</label>
+          <input type="text"  th:field="*{status}" class="form-control" id="status"  placeholder="Enter Status">
+        </div>
+
+        
+        <button type="submit" name= "submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+            
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+
+<!-- Page specific script -->
+<script>
+$(function () {
+  $.validator.setDefaults({
+    submitHandler: function () {
+      alert( "Form successful submitted!" );
+    }
+  });
+  $('#quickForm').validate({
+    rules: {
+      email: {
+        required: true,
+        email: true,
+      },
+      password: {
+        required: true,
+        minlength: 5
+      },
+      terms: {
+        required: true
+      },
+    },
+    messages: {
+      email: {
+        required: "Please enter a email address",
+        email: "Please enter a valid email address"
+      },
+      password: {
+        required: "Please provide a password",
+        minlength: "Your password must be at least 5 characters long"
+      },
+      terms: "Please accept our terms"
+    },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.form-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+  });
+});
+</script>
+</body>
+</html>

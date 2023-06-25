@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultrgg.net.nz/thymeleaf/layout"
+layout:decorate="template">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student</title>
+  
+ 
+</head>
+<body class="hold-transition sidebar-mini">
+
+  <!-- Content Wrapper. Contains page content -->
+  <div layout:fragment="content1">
+  
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Student</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/student/list">Home</a></li>
+              <li class="breadcrumb-item active">Student</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <a href="/student/entry"><button class="btn btn-md btn-info my-3">Add New Student</button></a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+              
+              
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>USER ID</th>
+                    <th>NAME</th>
+                    <th>GENDER</th>
+                    <th>PHONE</th>
+                    <th>PHOTO</th>
+                    <th>CITY</th>
+                    <th>ENTRY DATE</th>
+                    <th>DEPARTMENT</th>
+                    <th>COURSE</th>
+                    <th>SEMESTER</th>
+                    <th>ACTION</th>
+                </tr>
+                  </thead>
+                  <tbody> 
+                <tr th:each="list :${list}">
+                	<td th:text="${list.id}"></td>
+                    <td th:text="${list.user_id}"></td>
+			        <td th:text="${list.name}"></td>
+			        <td th:text="${list.gender}"></td>
+			        <td th:text="${list.phone}"></td>
+			 		<td th:text="${list.photo}"></td>
+			 		<td th:text="${list.city}"></td>
+			 		<td th:text="${list.entry_date}"></td>
+			 		<td th:text="${list.department}"></td>
+			 		<td th:text="${list.course}"></td>
+			 		<td th:text="${list.semester}"></td>
+                    <td style="width: 192px;">
+                    <a th:href="@{/student/edit/{id}(id=${list.id})}" ><button class="btn btn-sm btn-success">UPDATE</button></a> 
+                  <a th:href="@{/student/delete/{id}(id=${list.id})}" onClick='return confirm("do you want to delete this record?")' >
+                  <button class="btn btn-sm btn-danger">DELETE</button></a>
+                </tr> 
+             </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>USER ID</th>
+                    <th>NAME</th>
+                    <th>GENDER</th>
+                    <th>PHONE</th>
+                    <th>PHOTO</th>
+                    <th>CITY</th>
+                    <th>ENTRY DATE</th>
+                    <th>DEPARTMENT</th>
+                    <th>COURSE</th>
+                    <th>SEMESTER</th>
+                    <th>ACTION</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+ 
+<aside class="control-sidebar control-sidebar-dark">
+  </aside>
+
+</body>
+</html>

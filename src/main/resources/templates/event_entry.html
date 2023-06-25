@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en"  layout:decorate ="template">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Entry</title>
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+<div layout:fragment = "content1">
+
+   <div class ="container my-3">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Events</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Events</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Event Entry</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="container my-3">
+             <form action="#" th:action="@{/event/insert}" th:object="${event}" method="post">
+         
+          <div class="form-group">
+            <label for="user_id">USER-ID</label>
+            <input type="text" th:field="*{user_id}" class="form-control" id="user_id" name="user_id" >
+          </div>
+  
+          <div class="form-group">
+              <label for="title">TITLE</label>
+              <textarea th:field="*{title}" class="form-control" id="title" name="title" placeholder="Event Title" > </textarea>
+            </div>
+            <div class="form-group">
+            <label for="startDate">START DATE</label>
+            <input type="date" th:field="*{startDate}" class="form-control" id="startDate" name="startDate" >
+          </div>
+  
+          <div class="form-group">
+              <label for="lastDate">END DATE</label>
+              <input type="date" th:field="*{lastDate}" class="form-control" id="lastDate" name="lastDate" >
+            </div>
+            <div class="form-group">
+            <label for="banner">BANNER</label>
+            <textarea th:field="*{banner}" class="form-control" id="banner" name="banner" placeholder="Event Banner"></textarea>
+          </div>
+  
+          <div class="form-group">
+              <label for="detail">DETAIL</label>
+              <textarea th:field="*{detail}" class="form-control" id="detail" name="detail" placeholder="Describe Event"></textarea>
+            </div>
+            <div class="form-group">
+            <label for="status">STATUS</label>
+            <input type="text" th:field="*{status}" class="form-control" id="status" name="status" >
+          </div>
+  
+          
+    
+       
+          <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </form>
+            </div>
+            </div>
+         
+          <div class="col-md-6">
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+   
+  </div>
+  
+</div>
+ 
+
+  
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+
+
+</body>
+</html>

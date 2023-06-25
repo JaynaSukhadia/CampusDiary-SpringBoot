@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en"  layout:decorate ="template">
+<head>  
+  <title>Event Registration List</title>
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+<div layout:fragment = "content1">
+<div class ="container my-3">
+
+     <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Event Registrations</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Event Registrations</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+          
+          
+          
+            
+
+            <div class="card">
+              <div class="card-header">
+                
+                <a href="/eventregistration/neweventRegistration"><button class="btn btn-md btn-info my-3">New Event Registration</button> </a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+              
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+          <tr>
+              <th>ID</th>
+              <th>USER ID</th>
+              <th>EVENT ID</th>
+              <th>PAYMENT TYPE</th>
+              <th>PAYMENT DETAIL</th>
+              <th>ACTION</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr th:each = "eventRegistration : ${list}">
+              <td th:text="${eventRegistration.id}"></td>
+              <td th:text="${eventRegistration.user_id}"></td>
+              <td th:text="${eventRegistration.event_id}"></td>
+              <td th:text="${eventRegistration.paymentType}"></td>
+              <td th:text="${eventRegistration.paymentDetail}"></td>
+             
+              <td style="width:160px">
+                 <a th:href="@{/eventregistration/edit/{id}(id=${eventRegistration.id})}" ><button class="btn btn-sm btn-success">UPDATE</button></a> 
+                  <a th:href="@{/eventregistration/delete/{id}(id=${eventRegistration.id})}" onclick="return confirm('Do you want to delete?')"><button class="btn btn-sm btn-danger">DELETE</button></a>
+              </td>
+          </tr>
+         
+      </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>ID</th>
+              <th>NAME</th>
+              <th>EMAIL</th>
+              <th>SUBJECT</th>
+              <th>MESSAGE</th>
+              <th>ACTION</th>
+                  </tr>
+                  </tfoot>
+                </table>
+                
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div> 
+ </div> 
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+
+</body>
+</html>

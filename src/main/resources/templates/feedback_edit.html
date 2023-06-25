@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en"  layout:decorate ="template">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feedback Edit</title>
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+<div layout:fragment = "content1">
+
+   <div class ="container my-3">
+     <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Feedback</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Feedbacks</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Feedback Edit</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="container my-3">
+            <form action="#"  th:action="@{/feedback/update(id=${feedback.id})}"   th:object="${feedback}"  method="post">
+         
+          <div class="form-group">
+            <label for="name">NAME</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="Enter Name">
+          </div>
+  
+          <div class="form-group">
+              <label for="email">E-MAIL</label>
+              <input type="email" th:field="*{email}" class="form-control" id="email" name="email" placeholder="Enter E-mail">
+            </div>
+  
+          <div class="form-group">
+              <label for="subject">SUBJECT</label>
+              <input type="text" th:field="*{subject}" class="form-control" id="subject" name="subject" placeholder="Enter subject">
+          </div>
+            
+            <div class="form-group">
+              <label for="message">MESSAGE</label>
+              <input type="text" th:field="*{message}" class="form-control" id="message" name="message" placeholder="Enter message">
+            </div>
+
+           
+          
+          
+          <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </form>
+            </div>
+            </div>
+         
+          <div class="col-md-6">
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+   
+  </div>
+  
+</div>
+ 
+
+  
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+
+
+</body>
+</html>

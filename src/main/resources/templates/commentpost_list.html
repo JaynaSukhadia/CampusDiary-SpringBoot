@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+layout:decorate="template">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment Post</title>
+
+</head>
+<body class="hold-transition sidebar-mini">
+<div layout:fragment="content1">
+<div class="wrapper">
+     <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Comment Post</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Comment Post</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+          
+           
+
+            <div class="card">
+              <div class="card-header">
+                  <a href="/comment/newcommentpost"><h3 class="card-title">Add New comment</h3> </a>
+              
+              </div>
+              <!-- /.card-header -->
+              
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+              <th>ID</th>
+              <th>POST ID</th>
+              <th>USER ID</th>
+              <th>COMMENT</th>
+              <th>ENTRY DATE</th>
+              <th>ACTION</th>
+          </tr>
+                  </thead>
+                 <tbody>
+          <tr th:each = "commentpost : ${list}">
+              <td th:text="${commentpost.id}"></td>
+              <td th:text="${commentpost.postid}"></td>
+              <td th:text="${commentpost.userid}"></td>
+              <td th:text="${commentpost.comment}"></td>
+              <td th:text="${commentpost.entrydate}"></td>
+             
+              <td style="width:160px">
+                 <a th:href="@{/comment/edit/{id}(id=${commentpost.id})}" ><button class="btn btn-sm btn-success">UPDATE</button></a> 
+                  <a th:href="@{/comment/delete/{id}(id=${commentpost.id})}" onclick="return confirm('Do you want to delete?')"><button class="btn btn-sm btn-danger">DELETE</button></a>
+              </td>
+          </tr>
+         
+      </tbody>
+                  <tfoot>
+                  <tr>
+                      <th>ID</th>
+		              <th>POST ID</th>
+		              <th>USER ID</th>
+		              <th>COMMENT</th>
+		              <th>ENTRY DATE</th>
+		              <th>ACTION</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ </div>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</body>
+</html>

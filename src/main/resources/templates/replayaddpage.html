@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultrgg.net.nz/thymeleaf/layout"
+layout:decorate="template">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reply Comments </title>
+
+ 
+</head>
+<body class="hold-transition sidebar-mini">
+<div layout:fragment="content1">
+  
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1> Reply Comment</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/replay/list">Home</a></li>
+              <li class="breadcrumb-item active"> Reply Comment</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title"> Reply Comment Entry</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+   
+              <div class="container my-3">
+		      <form action="#"  th:action="@{/replay/insert}"   th:object="${replaycomment}"  method="post">
+		        <div class="form-group">
+		            <label for="comment_post_id">comment_post_id</label>
+		            <input type="text" th:field="*{comment_post_id}" class="form-control" id="comment_post_id" name="comment_post_id" placeholder="Enter Comment Post Id">
+		          </div>
+		          
+		          <div class="form-group">
+		            <label for="user_id">User Id</label>
+		            <input type="text" th:field="*{user_id}" class="form-control" id="user_id" name="user_id" placeholder="Enter User Id">
+		          </div>
+		          
+		          <div class="form-group">
+		            <label for="message">Message</label>
+		            <textarea th:field="*{message}" class="form-control" id="message" name="message" placeholder="Enter Message"></textarea>
+		          </div>
+		          <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+		        </form>
+  
+			 </div>
+          </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+</body>
+</html>
